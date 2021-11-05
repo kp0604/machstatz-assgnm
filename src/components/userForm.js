@@ -57,7 +57,7 @@ const UserForm = () => {
     if (fist_name && last_name && pwd && email && username) {
      
       axios
-        .post("http://3.6.93.159:7853/machstatz/add_new_user/",config,userObj)
+        .post("http://3.6.93.159:7853/machstatz/add_new_user",config,userObj)
         .then(function (response) {
           console.log(response);
           alert("User Added Successfully")
