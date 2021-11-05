@@ -8,15 +8,10 @@ const UserCard = (props) => {
   const handleClick = (delUser) => {
     console.log(delUser);
     async function delData() {
-      const config = {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-        },
-      };
+     
       try {
         const res = await axios.delete(
-          "http://3.6.93.159:7853/machstatz/delete_existing_user",config,
+          "http://3.6.93.159:7853/machstatz/delete_existing_user",
           delUser
         );
         const data = res.data;

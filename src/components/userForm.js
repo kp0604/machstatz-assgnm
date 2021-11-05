@@ -18,8 +18,12 @@ import {
 
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Users from './users'
 
 const UserForm = () => {
+
+
+
   const initialUserObj = {
     email: "",
     fist_name: "",
@@ -48,19 +52,15 @@ const UserForm = () => {
     e.preventDefault();
     console.log(userObj)
     const { fist_name, last_name, pwd, email, username } = userObj;
-    const config = {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    };
+   
     if (fist_name && last_name && pwd && email && username) {
      
       axios
-        .post("http://3.6.93.159:7853/machstatz/add_new_user",config,userObj)
+        .post("http://3.6.93.159:7853/machstatz/add_new_user",userObj)
         .then(function (response) {
           console.log(response);
           alert("User Added Successfully")
+         
         })
         .catch(function (error) {
           console.log(error);

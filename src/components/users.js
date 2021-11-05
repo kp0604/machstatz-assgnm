@@ -5,23 +5,18 @@ import axios from "axios";
 
 const Users = () => {
   const [userData, setUserData] = useState();
-const config = {
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "application/json",
-  },
-};
+
     useEffect(
         () => {
             async function getData() {
                 try {
-                    console.log(userData);
+                    // // console.log(userData);
                     const res = await axios.get(
-                        "http://3.6.93.159:7853/machstatz/get_all_users",config
+                        "http://3.6.93.159:7853/machstatz/get_all_users",
                     );
                     const data = res.data;
                     setUserData(() => data);
-                    console.log(data);
+                    // // // console.log(data);
                 }
                 catch (error) {
                     console.log(error)
@@ -30,7 +25,7 @@ const config = {
             getData()
         }
           ,
-    []
+    [userData]
   );
 
   
