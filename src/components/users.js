@@ -17,7 +17,7 @@ const config = {
                 try {
                     console.log(userData);
                     const res = await axios.get(
-                        "http://3.6.93.159:7853/machstatz/get_all_users",config
+                        "http://3.6.93.159:7853/machstatz/get_all_users/",config
                     );
                     const data = res.data;
                     setUserData(() => data);

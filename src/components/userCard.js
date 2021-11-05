@@ -16,7 +16,7 @@ const UserCard = (props) => {
       };
       try {
         const res = await axios.delete(
-          "http://3.6.93.159:7853/machstatz/delete_existing_user",config,
+          "http://3.6.93.159:7853/machstatz/delete_existing_user/",config,
           delUser
         );
         const data = res.data;
