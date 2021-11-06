@@ -25,7 +25,7 @@ const Users = () => {
             getData()
         }
           ,
-    [userData]
+    []
   );
 
   

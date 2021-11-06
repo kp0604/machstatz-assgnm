@@ -36,9 +36,6 @@ const UserForm = () => {
 
   const [togglePass, settogglePass] = useState(false);
   
-  // const handleChangePassVal = (prop) => (event) => {
-  //   setValuePass({ ...valuePass, [prop]: event.target.value });
-  // };
 
   const handleClickShow = () => {
     settogglePass((prev)=>!prev);
