@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Typography, Grid,AppBar } from "@mui/material";
+import { Box, Typography, Grid} from "@mui/material";
 import UserCard from "./userCard";
 import  {GetDataContext} from '../contexts/getDataContext'
 

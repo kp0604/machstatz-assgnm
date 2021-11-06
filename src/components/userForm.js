@@ -1,7 +1,6 @@
 import { React, useState ,useContext} from "react";
 import axios from "axios";
 import {
-  Typography,
   Box,
   TextField,
   Select,
@@ -54,13 +53,14 @@ const UserForm = () => {
         .then(function (response) {
           console.log(response);
           alert("User Added Successfully");
+            getData();
         })
         .catch(function (error) {
           console.log(error);
           alert("Couldn't add user'");
         });
       handleReset();
-      getData()
+    
     } else {
       alert("enter all");
     }
