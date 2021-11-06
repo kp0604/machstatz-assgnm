@@ -1,44 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, Grid } from "@mui/material";
+import React, { useContext } from "react";
+import { Box, Typography, Grid,AppBar } from "@mui/material";
 import UserCard from "./userCard";
-import axios from "axios";
+import  {GetDataContext} from '../contexts/getDataContext'
+
 
 const Users = () => {
-  const [userData, setUserData] = useState();
-
-    useEffect(
-        () => {
-            async function getData() {
-                try {
-                    // // console.log(userData);
-                    const res = await axios.get(
-                        "http://3.6.93.159:7853/machstatz/get_all_users",
-                    );
-                    const data = res.data;
-                    setUserData(() => data);
-                    // // // console.log(data);
-                }
-                catch (error) {
-                    console.log(error)
-                }
-            }
-            getData()
-        }
-          ,
-    []
-  );
-
-  
+ 
+const {userData} =useContext(GetDataContext)
+   
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }} p={2}>
-      <Typography variant="h4" component="h4" textAlign="center">
-        Users
-      </Typography>
-      <Grid container spacing={3} p={5}>
-        {(userData) ? (
+    <Box sx={{ display: "flex", flexDirection: "column" }} p={6}>
+      <Grid
+        container
+        spacing={2}
+        // columnSpacing={{md: 2,lg:2 }}
+        // rowSpacing={{ xs: 2, md: 2, lg: 2 }}
+        // rows={{xs:12,sm:12,md:12,lg:12}}
+        // columns={{ xs: 12, sm: 12, md: 12,lg:12 }}
+        // p={2}
+        // mt={1}
+      >
+        {userData ? (
           userData.map((user) => (
-            <Grid item>
-                  <UserCard user={user}/>
+            <Grid item xs={12} sm={12} md={3} lg={4}>
+              <UserCard user={user} />
             </Grid>
           ))
         ) : (

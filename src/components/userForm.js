@@ -1,10 +1,9 @@
-import { React, useState } from "react";
+import { React, useState ,useContext} from "react";
 import axios from "axios";
 import {
   Typography,
   Box,
   TextField,
-  Grid,
   Select,
   Stack,
   MenuItem,
@@ -18,11 +17,12 @@ import {
 
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Users from './users'
+
+import { GetDataContext } from "../contexts/getDataContext";
 
 const UserForm = () => {
 
-
+  const { getData } = useContext(GetDataContext);
 
   const initialUserObj = {
     email: "",
@@ -31,14 +31,12 @@ const UserForm = () => {
     pwd: "",
     username: "",
   };
-  const [userObj, setUserObj] = useState(initialUserObj)
-
+  const [userObj, setUserObj] = useState(initialUserObj);
 
   const [togglePass, settogglePass] = useState(false);
-  
 
   const handleClickShow = () => {
-    settogglePass((prev)=>!prev);
+    settogglePass((prev) => !prev);
   };
 
   const handleMouseDownpwd = (event) => {
@@ -46,38 +44,36 @@ const UserForm = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(userObj)
+    e.preventDefault()
+    console.log(userObj);
     const { fist_name, last_name, pwd, email, username } = userObj;
-   
+
     if (fist_name && last_name && pwd && email && username) {
-     
       axios
-        .post("http://3.6.93.159:7853/machstatz/add_new_user",userObj)
+        .post("http://3.6.93.159:7853/machstatz/add_new_user", userObj)
         .then(function (response) {
           console.log(response);
-          alert("User Added Successfully")
-         
+          alert("User Added Successfully");
         })
         .catch(function (error) {
           console.log(error);
-          alert("Couldn't add user'")
+          alert("Couldn't add user'");
         });
-      handleReset()
-    }
-    else {
+      handleReset();
+      getData()
+    } else {
       alert("enter all");
     }
   };
 
   const handleChangeInput = (e) => {
-    const {name,value}=e.target
-    setUserObj( {...userObj, [name]: value})
-  }
+    const { name, value } = e.target;
+    setUserObj({ ...userObj, [name]: value });
+  };
 
   const handleReset = () => {
-    setUserObj(initialUserObj)
-  }
+    setUserObj(initialUserObj);
+  };
   return (
     <Box
       sx={{
@@ -86,20 +82,17 @@ const UserForm = () => {
         flexDirection: "column",
       }}
       bgcolor="white"
-      p={2}
+      p={6}
     >
-      <Typography variant="h4" component="h4" textAlign="center">
-        Add User
-      </Typography>
-
+      
       <form noValidate onSubmit={handleSubmit} onReset={handleReset}>
         <Stack
           direction="column"
           justifyContent="center"
           spacing={2}
-          mt={2}
+          // mt={2}
           mb={2}
-          p={4}
+          // p={4}
         >
           <TextField
             fullWidth
@@ -176,8 +169,14 @@ const UserForm = () => {
             />
           </FormControl>
 
-          <Stack direction="row" justifyContent="center" spacing={4}>
-            <Button sx={{ width: 100 }} variant="contained" color="error" type="reset">
+        </Stack>
+          <Stack direction="row" justifyContent="center" spacing={4} >
+            <Button
+              sx={{ width: 100 }}
+              variant="contained"
+              color="error"
+              type="reset"
+            >
               Cancel
             </Button>
             <Button
@@ -189,10 +188,11 @@ const UserForm = () => {
               Add
             </Button>
           </Stack>
-        </Stack>
       </form>
     </Box>
   );
 };
 
 export default UserForm;
+
+

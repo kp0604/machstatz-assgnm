@@ -1,22 +1,26 @@
-import React from "react";
+import React,{ useContext} from "react";
 import { Paper, Typography, Avatar, Stack, IconButton } from "@mui/material";
 import { green } from "@mui/material/colors";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
+import { GetDataContext } from "../contexts/getDataContext";
 
 const UserCard = (props) => {
+
+  const { getData } = useContext(GetDataContext);
+
   const handleClick = (delUser) => {
     console.log(delUser);
     async function delData() {
-     
       try {
         const res = await axios.delete(
           "http://3.6.93.159:7853/machstatz/delete_existing_user",
-          delUser
+          { params: { email: delUser } }
         );
         const data = res.data;
         console.log(data);
-        alert(data.message);
+        getData()
+        // alert(data.message);
       } catch (error) {
         console.log(error);
       }
@@ -25,8 +29,8 @@ const UserCard = (props) => {
   };
 
   return (
-    <Paper variant="outlined" sx={{ padding: 2, minWidth: 200 }} elevation={4}>
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
+    <Paper elevation={4}>
+      <Stack direction="row" justifyContent="space-between" alignItems="center" p={2}>
         <Stack direction="row" spacing={2} alignItems="center">
           <Avatar sx={{ bgcolor: green[500] }}>
             {props.user.fist_name[0]}
@@ -39,7 +43,7 @@ const UserCard = (props) => {
             handleClick(props.user.email);
           }}
         >
-          <DeleteIcon color="error"  />
+          <DeleteIcon color="error" />
         </IconButton>
       </Stack>
     </Paper>
