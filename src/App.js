@@ -1,5 +1,5 @@
 import UserForm from "./components/userForm";
-import { Grid, AppBar, Typography } from "@mui/material";
+import { Grid} from "@mui/material";
 import Users from "./components/users";
 import { GetDataContext } from "./contexts/getDataContext";
 import axios from "axios";
@@ -29,38 +29,15 @@ function App() {
   return (
     <div>
       <GetDataContext.Provider value={{ userData, getData }}>
-        <AppBar position="static" color="transparent" sx={{ padding :2}}>
-          <Grid container>
-            <Grid item xs={12} sm={12} md={12} lg={8}>
-              <Typography
-                variant="h4"
-                color="black"
-                component="h4"
-                textAlign="center"
-              >
-                Users
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={4}>
-              <Typography variant="h4" component="h4" textAlign="center">
-                Add User
-              </Typography>
-            </Grid>
-          </Grid>
-        </AppBar>
+        
         <Grid
           container
-          // columns={2}
-          // xs={{xs:2,sm:2,md:2,lg:2}}
-          // sm={2}
-          // md={2}
-          // lg={2}
           width="100vw"
           height="100vh"
         >
           <Grid
             item
-            // width="70vw"
+            
             xs={12}
             sm={12}
             md={12}
@@ -71,7 +48,7 @@ function App() {
           </Grid>
           <Grid
             item
-            // width="30vw"
+          
             xs={12}
             sm={12}
             md={12}

@@ -9,16 +9,14 @@ const Users = () => {
 const {userData} =useContext(GetDataContext)
    
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }} p={6}>
+    <Box sx={{ display: "flex", flexDirection: "column" }} p={4}>
+      <Typography variant="h4" bgcolor="white" color="black" component="h4" textAlign="center" mb={4}>
+        Users
+      </Typography>
       <Grid
         container
         spacing={2}
-        // columnSpacing={{md: 2,lg:2 }}
-        // rowSpacing={{ xs: 2, md: 2, lg: 2 }}
-        // rows={{xs:12,sm:12,md:12,lg:12}}
-        // columns={{ xs: 12, sm: 12, md: 12,lg:12 }}
-        // p={2}
-        // mt={1}
+        
       >
         {userData ? (
           userData.map((user) => (

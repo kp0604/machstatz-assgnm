@@ -2,6 +2,7 @@ import { React, useState ,useContext} from "react";
 import axios from "axios";
 import {
   Box,
+  Typography,
   TextField,
   Select,
   Stack,
@@ -82,9 +83,11 @@ const UserForm = () => {
         flexDirection: "column",
       }}
       bgcolor="white"
-      p={6}
+      p={4}
     >
-      
+      <Typography variant="h4" component="h4" textAlign="center" mb={4}>
+        Add User
+      </Typography>
       <form noValidate onSubmit={handleSubmit} onReset={handleReset}>
         <Stack
           direction="column"
@@ -168,26 +171,25 @@ const UserForm = () => {
               label="Password"
             />
           </FormControl>
-
         </Stack>
-          <Stack direction="row" justifyContent="center" spacing={4} >
-            <Button
-              sx={{ width: 100 }}
-              variant="contained"
-              color="error"
-              type="reset"
-            >
-              Cancel
-            </Button>
-            <Button
-              sx={{ width: 100 }}
-              variant="contained"
-              bgcolor="success"
-              type="submit"
-            >
-              Add
-            </Button>
-          </Stack>
+        <Stack direction="row" justifyContent="center" spacing={4}>
+          <Button
+            sx={{ width: 100 }}
+            variant="contained"
+            color="error"
+            type="reset"
+          >
+            Cancel
+          </Button>
+          <Button
+            sx={{ width: 100 }}
+            variant="contained"
+            bgcolor="success"
+            type="submit"
+          >
+            Add
+          </Button>
+        </Stack>
       </form>
     </Box>
   );

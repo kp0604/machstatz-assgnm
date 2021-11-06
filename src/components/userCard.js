@@ -31,6 +31,7 @@ const UserCard = (props) => {
   return (
     <Paper elevation={4}>
       <Stack direction="row" justifyContent="space-between" alignItems="center" p={2}>
+        
         <Stack direction="row" spacing={2} alignItems="center">
           <Avatar sx={{ bgcolor: green[500] }}>
             {props.user.fist_name[0]}
