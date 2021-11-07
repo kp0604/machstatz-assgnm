@@ -172,7 +172,7 @@ const UserForm = () => {
             />
           </FormControl>
         </Stack>
-        <Stack direction="row" justifyContent="center" spacing={4}>
+        <Stack direction="row" justifyContent="center" spacing={4} p={3}>
           <Button
             sx={{ width: 100 }}
             variant="contained"

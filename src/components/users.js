@@ -10,7 +10,8 @@ const {userData} =useContext(GetDataContext)
    
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }} p={4}>
-      <Typography variant="h4" bgcolor="white" color="black" component="h4" textAlign="center" mb={4}>
+      
+      <Typography variant="h4" bgcolor="orange" color="white" component="h4" textAlign="center" mb={4}>
         Users
       </Typography>
       <Grid
